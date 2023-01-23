@@ -8,7 +8,7 @@ export const TextInput = () => {
   const searchSkills = (e) => {
     const value = e.target.value
     if (value.trim()) {
-      dispatch(changeSearchField(e.target.value))
+      dispatch(changeSearchField(value))
     } else {
       dispatch({ type: actions.RESET_STORE })
     }

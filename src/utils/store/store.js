@@ -1,17 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import createSagaMiddleware from '@redux-saga/core';
+import saga from './skills/saga';
 
 import { skillsReducer } from './skills/reducer';
-import { changeSearchEpic, searchSkillsEpic } from './skills/epics';
 
-const epics = combineEpics(changeSearchEpic, searchSkillsEpic)
-const epicMiddleware = createEpicMiddleware()
+const sagaMiddleware = createSagaMiddleware()
 
 const store = configureStore({
   reducer: skillsReducer,
-  middleware: [epicMiddleware]
+  middleware: [sagaMiddleware]
 });
 
-epicMiddleware.run(epics)
+sagaMiddleware.run(saga)
 
 export default store

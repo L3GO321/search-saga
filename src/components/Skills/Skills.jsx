@@ -5,13 +5,11 @@ export const Skills = () => {
 
   const isHasKey = !!searchKey.trim()
 
-  console.log(loading)
-
   return (
     <div>
       {!isHasKey && 'Введите что-то для поиска'}
       {isHasKey && loading && '...Загрузка'}
-      {!loading && error && isHasKey && 'Что-то пошло не так, пропробуйте еще раз :('}
+      {!loading && error && isHasKey && error}
       {!loading && !error && isHasKey &&
         (items.length ?
           items.map(item => (
